@@ -6,174 +6,153 @@
   font-style: normal;
 }
 
-h1 {
-  color: yellow;
-  text-align: left;
-  font-size: clamp(2em, 10vw, 6em);
-  font-family: "PetitCochon", cursive, sans-serif;
-  font-weight: 300;
-  margin-left: 5vw; /* margen izquierdo proporcional al 5% del ancho de la ventana */
-}
-
-/* Estilos generales */
-html,
-body,
-* {
-  font-family: "PetitCochon", cursive, sans-serif;
-  font-weight: 300;
-  font-size: 1.1em;
-  -webkit-font-smoothing: antialiased;
-  font-smooth: always;
-  text-shadow: none;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
+/* Ocultar todo fuera del rango tablet */
 body {
-  height: 100%;
-  overflow: hidden; /* Sin scroll visible */
+  display: none;
 }
 
-/* Fondo para body con clase index */
-body.index {
-  background-image: url("foca.jpg?v=1");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: #105f9a;
-  height: 100%;
-  margin: 0;
-}
-
-footer {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  background: transparent;
-  color: yellow;
-  padding: 10px 20px;
-  font-family: "PetitCochon", cursive, sans-serif;
-  font-weight: 300;
-  font-size: 1em;
-  z-index: 1000;
-  white-space: nowrap;
-}
-
-nav {
-  display: flex;
-  gap: 20px;
-  justify-content: left;
-  align-items: center;
-  padding: 15px;
-  margin-left: 100px;
-  margin-top: 60px;
-}
-
-/* Botones con imagen y título centrado debajo */
-nav button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-nav button img {
-  width: 250px; /* tamaño base más pequeño */
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-nav button:hover img {
-  transform: translateZ(20px) translateX(10px);
-  filter: blur(2px);
-}
-
-nav button .titulo-foto {
-  color: yellow;
-  margin-top: 8px;
-  font-family: "PetitCochon", cursive, sans-serif;
-  font-weight: 300;
-  font-size: 1.7em;
-  user-select: none;
-  white-space: nowrap;
-}
-
-/* Media Queries para dispositivos pequeños */
-@media (max-width: 1024px) {
-  nav button img {
-    width: 200px;
+/* Mostrar sólo en tablets e iPads */
+@media (min-width: 768px) and (max-width: 1024px) {
+  body {
+    display: block;
   }
-}
 
-@media (max-width: 768px) {
-  nav {
-    padding: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-  nav button img {
-    width: 100%;
-    max-width: 150px;
-    height: auto;
-  }
   h1 {
-    font-size: 3em;
+    color: yellow;
+    text-align: left;
+    font-size: clamp(3em, 6vw, 5em);
+    font-family: "PetitCochon", cursive, sans-serif;
+    font-weight: 300;
+    margin-left: 5vw;
   }
-  footer {
-    font-size: 0.9em;
-    padding: 8px 15px;
-  }
-}
 
-@media (max-width: 480px) {
-  nav button img {
-    max-width: 100px;
+  /* Estilos generales */
+  html,
+  body,
+  * {
+    font-family: "PetitCochon", cursive, sans-serif;
+    font-weight: 300;
+    font-size: 1.1em;
+    -webkit-font-smoothing: antialiased;
+    font-smooth: always;
+    text-shadow: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
-  h1 {
-    font-size: 2em;
-    margin: 15px 0;
+
+  html,
+  body {
+    height: 100%;
+    overflow: hidden; /* Sin scroll visible */
   }
+
+  /* Fondo para body con clase index */
   body.index {
-    background-position: top center;
+    background-image: url("foca.jpg?v=1");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #105f9a;
+    height: 100%;
+    margin: 0;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: transparent;
+    color: yellow;
+    padding: 10px 20px;
+    font-family: "PetitCochon", cursive, sans-serif;
+    font-weight: 300;
+    font-size: 1em;
+    z-index: 1000;
+    white-space: nowrap;
+  }
+
+  nav {
+    display: flex;
+    gap: 20px;
+    justify-content: left;
+    align-items: center;
+    padding: 15px;
+    margin-left: 50px;
+    margin-top: 60px;
+  }
+
+  /* Botones con imagen y titulo centrado debajo */
+  nav button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav button img {
+    width: 200px; /* tamaño adecuado para tablets */
+    transition: transform 0.3s ease, filter 0.3s ease;
+    clip-path: ellipse(70% 60% at 50% 50%);
+    object-fit: cover;
+    border-radius: 20%;
+  }
+
+  nav button:hover img {
+    transform: translateZ(20px) translateX(10px);
+    filter: blur(2px);
+  }
+
+  nav button .titulo-foto {
+    color: yellow;
+    margin-top: 8px;
+    font-family: "PetitCochon", cursive, sans-serif;
+    font-weight: 300;
+    font-size: 1.7em;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  #form-image {
+    position: absolute;
+    top: 80px; /* Alineado vertical con el formulario */
+    left: calc(170px + 600px + 500px);
+    width: 140px;
+    height: auto;
+    opacity: 0; /* Oculto inicialmente */
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Animación de parpadeo por opacidad */
+  @keyframes parpadeo-imagen {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  .parpadea-imagen {
+    animation: parpadeo-imagen 1s infinite;
+    pointer-events: auto;
   }
 }
 
-/* Ejemplo: forma ovalada */
-nav button img {
-  clip-path: ellipse(70% 60% at 50% 50%);
-  object-fit: cover;
-  border-radius: 20%; /* opcional, un poco de redondeo adicional */
-}
-
-#form-image {
-  position: absolute;
-  top: 80px; /* Alineado vertical con el formulario */
-  left: calc(
-    170px + 600px + 500px
-  ); /* margen izquierdo + ancho formulario + espacio extra */
-  width: 140px;
-  height: auto;
-  opacity: 0; /* Oculto inicialmente */
-  pointer-events: none; /* No interfiere mientras invisble */
-  transition: opacity 0.3s ease;
-}
-
-/* Animación de parpadeo por opacidad */
-@keyframes parpadeo-imagen {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
+/* Ocultar en móviles pequeños */
+@media (max-width: 767px) {
+  body {
+    display: none;
   }
 }
-.parpadea-imagen {
-  animation: parpadeo-imagen 1s infinite;
-  pointer-events: auto;
+
+/* Ocultar en pantallas grandes */
+@media (min-width: 1025px) {
+  body {
+    display: none;
+  }
 }
