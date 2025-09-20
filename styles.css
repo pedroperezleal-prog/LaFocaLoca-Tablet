@@ -6,6 +6,7 @@
   font-style: normal;
 }
 
+/* Reset y base */
 html,
 body,
 * {
@@ -28,20 +29,32 @@ body {
   padding: 0;
 }
 
-body.index {
-  background-image: url("foca.jpg?v=1");
-  background-size: cover; /* Hace que la imagen ocupe todo el ancho y alto */
-  background-repeat: no-repeat;
-  background-position: center center; /* Centra la imagen */
-  background-color: #105f9a;
-  height: 100vh; /* Altura igual a la ventana visible */
-  margin: 0;
+/* Imagen de fondo fija */
+.background-img {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
 }
 
+/* Body principal */
+body.index {
+  background-color: #105f9a;
+  color: yellow;
+  text-shadow: 0 0 8px #00000088;
+  height: 100vh;
+}
+
+/* Footer */
 footer {
   position: fixed;
   bottom: 0;
-  left: 10px; /* footer más hacia la izquierda */
+  left: 10px;
   background: transparent;
   color: yellow;
   padding: 10px 20px;
@@ -52,17 +65,19 @@ footer {
   white-space: nowrap;
 }
 
+/* Navegación */
 nav {
   display: flex;
-  flex-direction: column; /* Apilar verticalmente */
+  flex-direction: column;
   gap: 20px;
-  justify-content: flex-start; /* Alinear arriba */
-  align-items: flex-start; /* Alinear a la izquierda */
+  justify-content: flex-start;
+  align-items: flex-start;
   padding: 15px;
   margin-left: 5vw;
   margin-top: 10px;
 }
 
+/* Botones */
 nav button {
   background: none;
   border: none;
@@ -70,9 +85,10 @@ nav button {
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Alinear la imagen y texto a la izquierda */
+  align-items: flex-start;
 }
 
+/* Imágenes en botones */
 nav button img {
   max-width: 100%;
   width: 250px;
@@ -99,6 +115,7 @@ nav button .titulo-foto {
   text-align: left;
 }
 
+/* Título principal */
 h1 {
   color: yellow;
   text-align: left;
@@ -108,6 +125,7 @@ h1 {
   margin-left: 5vw;
 }
 
+/* Responsive */
 @media (max-width: 1024px) {
   nav button img {
     width: 200px;
@@ -146,6 +164,7 @@ h1 {
   }
 }
 
+/* Imagen en formulario */
 #form-image {
   position: absolute;
   top: 80px;
@@ -157,6 +176,7 @@ h1 {
   transition: opacity 0.3s ease;
 }
 
+/* Animación parpadeo */
 @keyframes parpadeo-imagen {
   0%,
   100% {
