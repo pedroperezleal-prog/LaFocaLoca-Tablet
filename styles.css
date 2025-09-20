@@ -170,8 +170,8 @@ h1 {
 /* Posición para #form-image */
 #form-image {
   position: absolute;
-  top: 80px;
-  margin-left: 500px;
+  top: 70px;
+  margin-left: 400px;
   width: 140px;
   height: auto;
   opacity: 0;
