@@ -171,7 +171,7 @@ h1 {
 #form-image {
   position: absolute;
   top: 80px;
-  left: calc(170px + 600px + 500px);
+  left: calc(170px + 600px + 200px);
   width: 140px;
   height: auto;
   opacity: 0;
