@@ -57,7 +57,7 @@ body.index {
 footer {
   position: fixed;
   bottom: 0;
-  left: 100px; /* margen a la izquierda */
+  left: 300px; /* margen a la izquierda */
   background: transparent;
   color: yellow;
   padding: 10px 20px;
@@ -171,12 +171,13 @@ h1 {
 #form-image {
   position: absolute;
   top: 80px;
-  left: calc(170px + 600px + 200px);
+  left: calc(170px + 400px + 200px);
   width: 140px;
   height: auto;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
+  top: 100px;
 }
 
 /* Animación de parpadeo */

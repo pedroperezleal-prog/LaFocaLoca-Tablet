@@ -207,7 +207,7 @@ tbody td {
 #form-image {
   position: absolute;
   top: 80px;
-  left: calc(170px + 600px + 200px);
+  left: 0;
   width: 140px;
   height: auto;
   opacity: 0;
