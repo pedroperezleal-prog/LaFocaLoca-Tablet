@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La Foca Loca - Cumpleaños</title>
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#d9ff00" />
+  <link rel="icon" href="icon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="styles-cumple.css" />
+  <!-- jsPDF y plugin AutoTable -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+  <style>
+  
+    .top-right-buttons {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 1000;
+    }
+    .top-right-buttons .btn-accion {
+      background-color: #1cbaf9;
+      color: #ddf414;
+      font-weight: 300;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      min-height: 40px;
+      white-space: nowrap;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-family: "PetitCochon", cursive, sans-serif;
+      text-shadow: 0 0 4px #00000088;
+    }
+    .top-right-buttons .btn-accion:hover,
+    .top-right-buttons .btn-accion:focus {
+      background-color: #0066ff;
+      color: white;
+      outline: none;
+    }
+    /* Botones para tablas */
+    .tabla-accion-btn {
+      background-color: #1cbaf9;
+      color: #ddf414;
+      font-weight: 300;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 1em;
+      min-height: 38px;
+      white-space: nowrap;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin-right: 5px;
+      font-family: "PetitCochon", cursive, sans-serif;
+      text-shadow: 0 0 4px #00000088;
+    }
+    .tabla-accion-btn:hover,
+    .tabla-accion-btn:focus {
+      background-color: #0066ff;
+      color: white;
+      outline: none;
+    }
+    /* Contenedor formulario */
+    #form-container {
+      max-width: 600px;
+      margin: 80px 20px 20px 170px;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 16px #f9d71c;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      color: yellow;
+      text-shadow: 0 0 6px #000000cc;
+      font-family: "PetitCochon", cursive, sans-serif;
+    }
+    .input-group {
+      margin-bottom: 12px;
+      width: 100%;
+      max-width: 350px;
+    }
+    label {
+      display: block;
+      font-weight: 300;
+      margin-bottom: 4px;
+      color: yellow;
+      text-shadow: 0 0 4px #000000cc;
+    }
+    input[type="number"],
+    input[type="text"],
+    input[type="tel"],
+    input[type="time"],
+    select {
+      color: yellow;
+      text-transform: uppercase;
+      font-weight: 300;
+      width: 100%;
+      padding: 7px;
+      font-size: 1.1em;
+      border-radius: 5px;
+      border: 2px solid #00c3ff;
+      background: rgba(0, 0, 0, 0.3);
+      box-sizing: border-box;
+      text-shadow: none;
+    }
+    input::placeholder,
+    select::placeholder {
+      color: yellow;
+      opacity: 1;
+      text-shadow: none;
+    }
+    select#color option[value="azul"] {
+      color: blue;
+    }
+    select#color option[value="verde"] {
+      color: green;
+    }
+    select#color option[value="rojo"] {
+      color: red;
+    }
+    /* Contenedor tablas */
+    .tablas-container {
+      margin: 20px 50px 50px 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-weight: 300;
+      font-family: "PetitCochon", cursive, sans-serif;
+    }
+    thead th {
+      background-color: #40c4e6;
+      color: yellow;
+      padding: 8px;
+      border: 1px solid #00c3ff;
+      text-align: center;
+      text-shadow: 0 0 3px #00000088;
+    }
+    tbody td {
+      border: 1px solid #00c3ff;
+      padding: 6px 8px;
+      text-align: center;
+      color: #001a4d;
+    }
+    .tabla-section {
+      background: rgba(0, 0, 0, 0.25);
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .tabla-title {
+      font-size: 1.2em;
+      font-weight: 300;
+      color: yellow;
+      margin-bottom: 10px;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      #form-container {
+        margin: 80px 20px 20px 20px;
+        max-width: 100%;
+      }
+      .input-group {
+        max-width: 100%;
+      }
+      .tablas-container {
+        grid-template-columns: 1fr;
+        margin: 20px 20px 50px 20px;
+      }
+      .top-right-buttons {
+        top: 10px;
+        right: 10px;
+      }
+      .top-right-buttons .btn-accion {
+        font-size: 1em;
+        padding: 8px 15px;
+      }
+    }
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8em;
+        margin: 15px 10px;
+      }
+      table {
+        font-size: 0.8em;
+      }
+    }
+  </style>
+</head>
+<body class="cumple">
+  <!-- Botones de navegación -->
+  <div class="top-right-buttons" role="navigation" aria-label="Navegación principal">
+    <button type="button" class="btn-accion" onclick="location.href='index.html'" aria-label="Ir a Inicio" title="Ir a Inicio">Inicio</button>
+    <button type="button" class="btn-accion" onclick="location.href='libre.html'" aria-label="Ir a Juego Libre" title="Ir a Juego Libre">Juego Libre</button>
+  </div>
+  <!-- Formulario -->
+  <main>
+    <section id="form-container" aria-label="Formulario cumpleaños">
+      <div class="input-group">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" autocomplete="off" required />
+      </div>
+      <div class="input-group">
+        <label for="color">COLOR:</label>
+        <select id="color" name="color" required>
+          <option value="azul" style="color: blue;">Azul</option>
+          <option value="verde" style="color: green;">Verde</option>
+          <option value="rojo" style="color: red;">Rojo</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="nombre">NOMBRE:</label>
+        <input type="text" id="nombre" name="nombre" autocomplete="off" required />
+      </div>
+      <div class="input-group">
+        <label for="telefono">TELÉFONO:</label>
+        <input type="tel" id="telefono" name="telefono" autocomplete="tel" />
+      </div>
+      <div class="input-group">
+        <label for="merienda">MERIENDA:</label>
+        <select id="merienda" name="merienda">
+          <option value="bocata_chorizo">Bocata Chorizo</option>
+          <option value="bocata_nocilla">Bocata Nocilla</option>
+          <option value="bocata_york">Bocata York</option>
+          <option value="galletas">Galletas</option>
+          <option value="nuggets">Nuggets</option>
+          <option value="pizza">Pizza</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="observaciones">OBSERVACIONES:</label>
+        <input type="text" id="observaciones" name="observaciones" />
+      </div>
+      <div class="botones-accion">
+        <button id="insertarBtn" class="btn-accion" type="button" aria-label="Insertar datos en la tabla" title="Insertar datos en la tabla">Insertar</button>
+      </div>
+    </section>
+    </section>
+    <img
+    id="form-image"
+    src="aviso.png"
+    alt="Imagen a la derecha"
+    aria-hidden="true"
+    style="opacity: 0; pointer-events: none;" />
+    <section>
+
+    <!-- Contenedor tablas -->
+    <section class="tablas-container" aria-label="Tablas de datos por color">
+      <!-- Tabla Azul -->
+      <div class="tabla-section" aria-label="Tabla color azul">
+        
+        <div>
+          <button class="tabla-accion-btn" data-tabla="azul" data-accion="limpiar" aria-label="Limpiar tabla azul">Limpiar tabla</button>
+          <button class="tabla-accion-btn" data-tabla="azul" data-accion="exportarExcel" aria-label="Exportar tabla azul a Excel">Exportar Excel</button>
+          <button class="tabla-accion-btn" data-tabla="azul" data-accion="exportarPDF" aria-label="Exportar tabla azul a PDF">Exportar PDF</button>
+        </div>
+        <table class="tabla-azul" aria-describedby="descripcion-tabla-azul" role="grid">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Teléfono</th>
+              <th>Merienda</th>
+              <th>Observaciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <!-- Tabla Verde -->
+      <div class="tabla-section" aria-label="Tabla color verde">
+        
+        <div>
+          <button class="tabla-accion-btn" data-tabla="verde" data-accion="limpiar" aria-label="Limpiar tabla verde">Limpiar tabla</button>
+          <button class="tabla-accion-btn" data-tabla="verde" data-accion="exportarExcel" aria-label="Exportar tabla verde a Excel">Exportar Excel</button>
+          <button class="tabla-accion-btn" data-tabla="verde" data-accion="exportarPDF" aria-label="Exportar tabla verde a PDF">Exportar PDF</button>
+        </div>
+        <table class="tabla-verde" aria-describedby="descripcion-tabla-verde" role="grid">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Teléfono</th>
+              <th>Merienda</th>
+              <th>Observaciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <!-- Tabla Rojo -->
+      <div class="tabla-section" aria-label="Tabla color rojo">
+        
+        <div>
+          <button class="tabla-accion-btn" data-tabla="rojo" data-accion="limpiar" aria-label="Limpiar tabla rojo">Limpiar tabla</button>
+          <button class="tabla-accion-btn" data-tabla="rojo" data-accion="exportarExcel" aria-label="Exportar tabla rojo a Excel">Exportar Excel</button>
+          <button class="tabla-accion-btn" data-tabla="rojo" data-accion="exportarPDF" aria-label="Exportar tabla rojo a PDF">Exportar PDF</button>
+        </div>
+        <table class="tabla-rojo" aria-describedby="descripcion-tabla-rojo" role="grid">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Teléfono</th>
+              <th>Merienda</th>
+              <th>Observaciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="app-cumple.js" defer></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('./sw.js');
+      });
+    }
+  </script>
+</body>
+</html>

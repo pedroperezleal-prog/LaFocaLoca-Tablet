@@ -1,0 +1,77 @@
+{
+  "name": "La Foca Loca",
+  "short_name": "FocaLoca",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "background_color": "#ffffff",
+  "theme_color": "#317EFB",
+  "description": "Una app divertida y sencilla para gestionar cumpleaños, listas y más.",
+  "orientation": "portrait",
+  "iarc_rating_id": "1586f46b-7a3b-4ebe-8c63-d94fe4dd81a0", 
+  "lang": "es-ES",
+  "display_override": [ "window-controls-overlay","standalone","browser"
+],
+
+  "related_applications": [
+  {
+    "platform": "windows",
+    "url": "https://apps.microsoft.com/detail/9NH4RXR8PFZF",
+    "id": "9NH4RXR8PFZF"
+  },
+  {
+    "platform": "play",
+    "url": "https://play.google.com/store/games?hl=es_419&pli=1"
+  }
+]
+,
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.ico",
+      "sizes": "512x512",
+      "type": "image/x-icon"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./screenshots/screenshot1.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    },
+    {
+      "src": "./screenshots/screenshot2.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Cumpleaños",
+      "short_name": "Cumple",
+      "description": "Ir a la página de cumpleaños",
+      "url": "/cumple.html"
+    },
+    {
+      "name": "Listas",
+      "short_name": "Listas",
+      "description": "Ver listas personales",
+      "url": "/libre.html"
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+focaloca",
+      "url": "https://pedroperezleal-prog.github.io/LaFocaLoca/"
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>La Foca Loca - Formulario y Registros</title>
+    <link rel="apple-touch-icon" href="icon-192.png" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#d9ff00" />
+    <link rel="icon" href="icon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="styles-libre.css" />
+    <!-- Librerías jsPDF y jsPDF-autotable -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"
+      defer
+    ></script>
+  </head>
+  <body class="libre">
+    <main>
+      <div class="top-right-buttons">
+        <button
+          type="button"
+          class="btn-accion"
+          onclick="location.href='index.html'"
+          aria-label="Ir a Inicio"
+          title="Ir a Inicio"
+        >
+          Inicio
+        </button>
+        <button
+          type="button"
+          class="btn-accion"
+          onclick="location.href='cumple.html'"
+          aria-label="Ir a Cumpleaños"
+          title="Ir a Cumpleaños"
+        >
+          Cumpleaños
+        </button>
+      </div>
+
+      <section id="form-container" aria-label="Formulario de registro">
+        <div class="botones-reset-nuevo">
+          <button
+            id="nuevoBtn"
+            class="btn-accion"
+            type="button"
+            aria-label="Poner hora actual en hora de entrada"
+            title="Poner hora actual en hora de entrada"
+          >
+            Nuevo
+          </button>
+          <button
+            id="resetBtn"
+            class="btn-accion"
+            type="button"
+            aria-label="Resetear tabla"
+            title="Resetear tabla"
+          >
+            Reset tabla
+          </button>
+        </div>
+        <div class="input-group">
+          <label for="id">ID:</label>
+          <input type="number" id="id" name="id" autocomplete="off" required />
+        </div>
+        <div class="input-group">
+          <label for="color">COLOR:</label>
+          <select id="color" name="color" required>
+            <option value="Azul" style="color: blue;">Azul</option>
+            <option value="Verde" style="color: green;">Verde</option>
+            <option value="Rojo" style="color: red;">Rojo</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="nombre">NOMBRE:</label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="telefono">TELÉFONO:</label>
+          <input type="tel" id="telefono" name="telefono" autocomplete="tel" />
+        </div>
+        <div class="input-group">
+          <label for="horaentrada">HORA ENTRADA:</label>
+          <input type="time" id="horaentrada" name="horaentrada" />
+        </div>
+        <div class="input-group">
+          <label for="tiempoJuego">TIEMPO DE JUEGO (minutos):</label>
+          <input type="number" id="tiempoJuego" name="tiempoJuego" min="0" />
+        </div>
+        <div class="input-group">
+          <label for="horasalida">HORA DE SALIDA:</label>
+          <input type="time" id="horasalida" name="horasalida" readonly />
+        </div>
+        <div class="input-group">
+          <label for="abonado">ABONADO (€):</label>
+          <input type="number" id="abonado" name="abonado" min="0" step="0.01" />
+        </div>
+        <div class="botones-accion">
+          <button
+            id="insertarBtn"
+            class="btn-accion"
+            type="button"
+            aria-label="Insertar datos en la tabla"
+            title="Insertar datos en la tabla"
+          >
+            Insertar
+          </button>
+          <button
+            id="exportExcel"
+            class="btn-accion"
+            type="button"
+            aria-label="Exportar tabla a Excel"
+            title="Exportar tabla a Excel"
+          >
+            Excel
+          </button>
+          <button
+            id="exportPdf"
+            class="btn-accion"
+            type="button"
+            aria-label="Exportar tabla a PDF"
+            title="Exportar tabla a PDF"
+          >
+            PDF
+          </button>
+        </div>
+      </section>
+      <img
+      id="form-image"
+      src="aviso.png"
+      alt="Imagen a la derecha"
+      aria-hidden="true"
+      style="opacity: 0; pointer-events: none;" />
+      <section>
+        <table id="tabla" aria-label="Listado de registros" role="grid">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">COLOR</th>
+              <th scope="col">NOMBRE</th>
+              <th scope="col">TELÉFONO</th>
+              <th scope="col">HORA ENT.</th>
+              <th scope="col">T.JUEGO</th>
+              <th scope="col">HORA SALIDA</th>
+              <th scope="col">RESTANTE</th>
+              <th scope="col">PAGADO</th>
+              <th scope="col">AVISADO</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
+    <script src="app-libre.js" defer></script>
+  </body>
+</html>
