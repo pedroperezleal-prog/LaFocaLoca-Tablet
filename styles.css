@@ -28,14 +28,12 @@ body {
 
 body.index {
   background-image: url("foca.jpg?v=1");
-  background-size: cover; /* cubre todo el contenedor */
+  background-size: cover; /* Hace que la imagen ocupe todo el ancho y alto */
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center center; /* Centra la imagen */
   background-color: #105f9a;
-  height: 100vh; /* ocupa toda la altura de la ventana */
-  min-height: 100vh;
+  height: 100vh; /* Altura igual a la ventana visible */
   margin: 0;
-  background-attachment: fixed; /* ayuda en algunos casos móviles */
 }
 
 footer {
@@ -54,12 +52,12 @@ footer {
 
 nav {
   display: flex;
-  flex-direction: column; /* apilar verticalmente */
+  flex-direction: column; /* Apilar verticalmente */
   gap: 20px;
-  justify-content: flex-start; /* arriba */
-  align-items: flex-start; /* izquierda */
+  justify-content: flex-start; /* Alinear arriba */
+  align-items: flex-start; /* Alinear a la izquierda */
   padding: 15px;
-  margin-left: 1vw;
+  margin-left: 5vw;
   margin-top: 10px;
 }
 
@@ -70,7 +68,7 @@ nav button {
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* izquierda en botón */
+  align-items: flex-start; /* Alinear contenidos a izquierda */
 }
 
 nav button img {
