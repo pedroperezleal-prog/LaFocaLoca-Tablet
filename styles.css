@@ -6,7 +6,7 @@
   font-style: normal;
 }
 
-/* Reset y base */
+/* Reset básico */
 html,
 body,
 * {
@@ -29,20 +29,23 @@ body {
   padding: 0;
 }
 
-/* Imagen de fondo fija */
-.background-img {
+/* Imagen de fondo fija con contenedor */
+.background-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
-  z-index: -1;
+  background-image: url("foca.jpg?v=1");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: -1; /* detrás de todo */
   pointer-events: none;
   user-select: none;
 }
 
-/* Body principal */
+/* Body */
 body.index {
   background-color: #105f9a;
   color: yellow;
@@ -54,7 +57,7 @@ body.index {
 footer {
   position: fixed;
   bottom: 0;
-  left: 10px;
+  left: 10px; /* margen a la izquierda */
   background: transparent;
   color: yellow;
   padding: 10px 20px;
@@ -65,7 +68,7 @@ footer {
   white-space: nowrap;
 }
 
-/* Navegación */
+/* Navegacion */
 nav {
   display: flex;
   flex-direction: column;
@@ -88,7 +91,7 @@ nav button {
   align-items: flex-start;
 }
 
-/* Imágenes en botones */
+/* Imagenes en botones */
 nav button img {
   max-width: 100%;
   width: 250px;
@@ -125,7 +128,7 @@ h1 {
   margin-left: 5vw;
 }
 
-/* Responsive */
+/* Media queries */
 @media (max-width: 1024px) {
   nav button img {
     width: 200px;
@@ -164,7 +167,7 @@ h1 {
   }
 }
 
-/* Imagen en formulario */
+/* Posición para #form-image */
 #form-image {
   position: absolute;
   top: 80px;
@@ -176,10 +179,9 @@ h1 {
   transition: opacity 0.3s ease;
 }
 
-/* Animación parpadeo */
+/* Animación de parpadeo */
 @keyframes parpadeo-imagen {
-  0%,
-  100% {
+  0%, 100% {
     opacity: 1;
   }
   50% {
