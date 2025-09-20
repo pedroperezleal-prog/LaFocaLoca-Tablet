@@ -1,57 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>La Foca Loca - Inicio</title>
-    <link rel="apple-touch-icon" href="icon-192.png" />
-    <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#d9ff00" />
-    <link rel="icon" href="icon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body class="index no-scroll">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Foca Loca - Inicio</title>
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#d9ff00" />
+  <link rel="icon" href="icon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="index no-scroll">
 
-    <main>
-      <h1>Bienvenido a La Foca Loca</h1>
+  <main>
+    <h1>Bienvenido a La Foca Loca</h1>
 
-      <nav>
-        <button onclick="location.href='cumple.html'" style="background: none; border: none; cursor: pointer;">
-          <img src="arti.jpg" alt="Cumpleaños" width="180" />
-          <span class="titulo-foto">Cumpleaños</span>
-        </button>
+    <nav>
+      <button onclick="location.href='cumple.html'" style="background: none; border: none; cursor: pointer;">
+        <img src="arti.jpg" alt="Cumpleaños" width="180" />
+        <span class="titulo-foto">Cumpleaños</span>
+      </button>
 
-        <button onclick="location.href='libre.html'" style="background: none; border: none; cursor: pointer;">
-          <img src="libre1.jpg" alt="Juego Libre" width="180" />
-          <span class="titulo-foto">Juego Libre</span>
-        </button>
-      </nav>
-      </section>
-      <img
+      <button onclick="location.href='libre.html'" style="background: none; border: none; cursor: pointer;">
+        <img src="libre1.jpg" alt="Juego Libre" width="180" />
+        <span class="titulo-foto">Juego Libre</span>
+      </button>
+    </nav>
+
+    <img
       id="form-image"
       src="aviso.png"
       alt="Imagen a la derecha"
       aria-hidden="true"
       style="opacity: 0; pointer-events: none;" />
 
-      <section>
-    </main>
+  </main>
 
-    <footer>
-      <p>Desarrollado por PericoPL &copy; 2025</p>
-    </footer>
-    <!-- al final del body para que la página cargue primero -->
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/sw.js').then(function(registration) {
-        console.log('Service Worker registrado con éxito:', registration.scope);
-      }, function(error) {
-        console.log('Fallo al registrar el Service Worker:', error);
+  <footer>
+    <p>Desarrollado por PericoPL &copy; 2025</p>
+  </footer>
+
+  <!-- al final del body para que la página cargue primero -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(function(registration) {
+          console.log('Service Worker registrado con éxito:', registration.scope);
+        }, function(error) {
+          console.log('Fallo al registrar el Service Worker:', error);
+        });
       });
-    });
-  }
-</script>
-<script src="app-index.js" defer></script>
+    }
+  </script>
+  <script src="app-index.js" defer></script>
 </body>
 </html>

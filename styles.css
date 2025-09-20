@@ -24,6 +24,8 @@ html,
 body {
   height: 100%;
   overflow-y: auto;
+  margin: 0;
+  padding: 0;
 }
 
 body.index {
@@ -39,7 +41,7 @@ body.index {
 footer {
   position: fixed;
   bottom: 0;
-  left: 700px;
+  left: 10px; /* footer más hacia la izquierda */
   background: transparent;
   color: yellow;
   padding: 10px 20px;
@@ -68,7 +70,7 @@ nav button {
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Alinear contenidos a izquierda */
+  align-items: flex-start; /* Alinear la imagen y texto a la izquierda */
 }
 
 nav button img {
